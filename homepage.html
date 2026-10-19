@@ -1,146 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TechStore - Home</title>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TechZone Logout</title>
 
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
-        body {
-            background: #0f172a;
-            color: white;
-        }
-
-    
-        nav {
-            background: #111827;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        nav ul li a:hover {
-            color: #38bdf8;
-        }
-
-     
-        .home {
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        #loginPage {
             text-align: center;
-            padding: 20px;
+            margin: 100px auto;
+            background: white;
+            padding: 30px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
         }
 
-        .home-content h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
         }
 
-        .home-content h1 span {
-            color: #38bdf8;
-        }
-
-        .home-content p {
-            font-size: 18px;
-            color: #cbd5e1;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #38bdf8;
-            color: #0f172a;
-            text-decoration: none;
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
             border-radius: 5px;
-            font-weight: bold;
         }
 
-        .btn:hover {
-            background: #0ea5e9;
-        }
-
-  
-        footer {
-            text-align: center;
+        #homePage {
+            display: none;
             padding: 20px;
-            background: #111827;
-            color: #94a3b8;
+            background: white;
+        }
+
+        nav a {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        footer {
+            margin-top: 30px;
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 10px;
         }
     </style>
 </head>
 
 <body>
 
- 
-    <nav>
+    <!-- LOGIN FORM -->
+    <div id="loginPage">
+        <h1>TechZone</h1>
+        <h2>Log out Form</h2>
 
-        <div class="logo">
-            TechStore
-        </div>
+        <form onsubmit="login(event)">
+            <input type="text" id="username"
+                   placeholder="Enter Username" required>
 
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="product.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="log in.html">log out</a></li>
-            
-        </ul>
+            <input type="password" id="password"
+                   placeholder="Enter Password" required>
 
-    </nav>
+            <button type="submit">Log out</button>
+        </form>
 
-  
-    <section class="home">
+        <p id="message"></p>
+    </div>
 
-        <div class="home-content">
+    <!-- HOMEPAGE -->
+    <div id="homePage">
 
-            <h1>
-                Welcome to <span>TechStore</span>
-            </h1>
+        <h1>Welcome to TechZone</h1>
+        <p>Your Online Tech Products Store</p>
 
+        <hr>
+
+        <h2>Navigation</h2>
+
+        <nav>
+            <a href="#homePage">Home</a> |
+            <a href="#about">About</a> |
+            <a href="#products">Products</a> |
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <hr>
+
+        <section id="about">
+            <h2>About Our Store</h2>
             <p>
-                Your online store for modern and reliable
-                technology products.
+                TechZone offers different technology products
+                for students, workers, and technology lovers.
             </p>
+        </section>
 
-            <a href="products.html" class="btn">
-                View Products
-            </a>
+        <section id="products">
+            <h2>Our Products</h2>
 
-        </div>
+            <h3>Laptop</h3>
+            <p>Useful for studying, coding, and working.</p>
 
-    </section>
-</section>
+            <h3>Smartphone</h3>
+            <p>Useful for communication and entertainment.</p>
+
+            <h3>Headphones</h3>
+            <p>Useful for listening to music and online classes.</p>
+        </section>
+
+        <hr>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Email: John@gmail.com</p>
+        </section>
 
         <button onclick="logout()">Logout</button>
 
@@ -176,9 +159,6 @@
         }
     </script>
 
-    <footer>
-        <p>johnreevecalmorin@gmail.com</p>
-    </footer>
-
 </body>
 </html>
+
