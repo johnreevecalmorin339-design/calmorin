@@ -19,7 +19,7 @@
             color: white;
         }
 
-        /* Navigation Bar */
+    
         nav {
             background: #111827;
             padding: 20px 8%;
@@ -50,7 +50,7 @@
             color: #38bdf8;
         }
 
-        /* Homepage */
+     
         .home {
             height: 90vh;
             display: flex;
@@ -89,7 +89,7 @@
             background: #0ea5e9;
         }
 
-        /* Footer */
+  
         footer {
             text-align: center;
             padding: 20px;
@@ -101,7 +101,7 @@
 
 <body>
 
-    <!-- Navigation -->
+ 
     <nav>
 
         <div class="logo">
@@ -140,8 +140,42 @@
         </div>
 
     </section>
+</section>
 
-    <!-- Footer -->
+        <button onclick="logout()">Logout</button>
+
+        <footer>
+            <p>JOHN REEEVE CALMORIN</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+
+            if (user === "admin" && pass === "1234") {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("homePage").style.display = "block";
+            } else {
+                document.getElementById("message").innerText =
+                    "Incorrect username or password!";
+            }
+        }
+
+        function logout() {
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("loginPage").style.display = "block";
+
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("message").innerText = "";
+        }
+    </script>
+
     <footer>
         <p>johnreevecalmorin@gmail.com</p>
     </footer>
