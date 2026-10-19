@@ -71,17 +71,39 @@
 
         .products {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
             gap: 25px;
+            align-items: stretch;
         }
 
         .product-card {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             background: #111a2e;
             padding: 25px 20px;
             border: 1px solid #253451;
             border-radius: 12px;
             text-align: center;
             transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .product-card img {
+            display: block;
+            width: 100%;
+            max-width: 260px;
+            height: 180px;
+            object-fit: contain;
+            margin: 0 auto 18px;
+        }
+
+        .product-card p {
+            flex-grow: 1;
+        }
+
+        .btn {
+            max-width: 100%;
         }
 
         .product-card:hover {
@@ -143,31 +165,87 @@
         }
 
         @media (max-width: 900px) {
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             header {
+                padding: 18px 5%;
                 justify-content: center;
                 text-align: center;
             }
 
             nav {
                 justify-content: center;
+                gap: 16px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 32px auto;
+            }
+
+            .products {
+                gap: 18px;
             }
         }
 
         @media (max-width: 550px) {
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .container h2 {
-                font-size: 27px;
+            header {
+                padding: 16px 4%;
             }
 
             header h1 {
-                font-size: 25px;
+                font-size: 24px;
+            }
+
+            nav {
+                width: 100%;
+                gap: 10px 16px;
+                font-size: 14px;
+            }
+
+            .container {
+                width: 92%;
+                margin: 26px auto;
+            }
+
+            .container h2 {
+                font-size: clamp(23px, 6vw, 28px);
+            }
+
+            .subtitle {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 24px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .product-card {
+                padding: 20px 16px;
+            }
+
+            .product-card img {
+                height: 160px;
+            }
+
+            .product-card p {
+                min-height: 0;
+            }
+
+            .price {
+                font-size: 20px;
+                margin-bottom: 16px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 240px;
+            }
+
+            footer {
+                padding: 16px 10px;
+                font-size: 13px;
             }
         }
     </style>
@@ -199,7 +277,7 @@
 
         
             <div class="product-card">
-                <img src="laptop.jpg" alt="">
+                <img src="laptop.jpg" alt="Laptop">
                 <h3>Laptop</h3>
                 <p>Powerful laptops for studying, programming, work, and entertainment.</p>
                 <div class="price">₱25,000</div>
@@ -207,7 +285,7 @@
             </div>
 
             <div class="product-card">
-                <img src="phone.jpg" alt="">
+                <img src="phone.jpg" alt="Smartphone">
                 <h3>Smartphone</h3>
                 <p>Smartphones for communication, gaming, photography, and daily use.</p>
                 <div class="price">₱12,000</div>
@@ -215,7 +293,7 @@
             </div>
 
             <div class="product-card">
-                <img src="headp.jpg" alt="">
+                <img src="headp.jpg" alt="Headphones">
                 <h3>Headphones</h3>
                 <p>Enjoy music, online classes, and games with clear sound.</p>
                 <div class="price">₱1,000</div>
@@ -224,7 +302,7 @@
 
            
             <div class="product-card">
-                <img src="keyboard.jpg" alt="">
+                <img src="keyboard.jpg" alt="Keyboard">
                 <h3>Keyboard</h3>
                 <p>A reliable keyboard for typing, coding, gaming, and office tasks.</p>
                 <div class="price">₱800</div>
@@ -233,7 +311,7 @@
 
             
             <div class="product-card">
-                <img src="mouse.jpg" alt="">
+                <img src="mouse.jpg" alt="Computer mouse">
                 <h3>Computer Mouse</h3>
                 <p>A comfortable mouse for smooth navigation and everyday computer use.</p>
                 <div class="price">₱350</div>
@@ -242,7 +320,7 @@
 
           
             <div class="product-card">
-                <img src="moni.jpg" alt="">
+                <img src="moni.jpg" alt="Computer monitor">
                 <h3>Computer Monitor</h3>
                 <p>A clear display for work, school, gaming, and entertainment.</p>
                 <div class="price">₱5,500</div>
@@ -384,4 +462,3 @@
 
 </body>
 </html>
-
