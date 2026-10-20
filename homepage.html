@@ -1,164 +1,312 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>TechZone Logout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Login</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        #loginPage {
-            text-align: center;
-            margin: 100px auto;
-            background: white;
-            padding: 30px;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
-        }
-
-        input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-        button {
-            background-color: #007bff;
+        body {
+            background: #0f172a;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
+            min-height: 100vh;
         }
 
-        #homePage {
-            display: none;
+        /* Login Page */
+        #login-page {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            background: white;
         }
 
-        nav a {
-            margin-right: 10px;
-            color: #007bff;
+        .login-box {
+            background: #111827;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+            text-align: center;
+        }
+
+        .login-box h1 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .login-box p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 18px;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            background: #1e293b;
+            color: white;
+            font-size: 16px;
+        }
+
+        .login-box input:focus {
+            outline: 2px solid #38bdf8;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 13px;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background: #0ea5e9;
+        }
+
+        #error-message {
+            color: #f87171;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Homepage */
+        #home-page {
+            display: none;
+        }
+
+        nav {
+            background: #111827;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .home {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .home-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .home-content h1 span {
+            color: #38bdf8;
+        }
+
+        .home-content p {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
         }
 
         footer {
-            margin-top: 30px;
-            background: #222;
-            color: white;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
+            background: #111827;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .home-content h1 {
+                font-size: 35px;
+            }
+
+            .login-box {
+                padding: 28px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- LOGIN FORM -->
-    <div id="loginPage">
-        <h1>TechZone</h1>
-        <h2>Log out Form</h2>
+  
+    <section id="login-page">
+        <div class="login-box">
 
-        <form onsubmit="login(event)">
-            <input type="text" id="username"
-                   placeholder="Enter Username" required>
+            <h1>TechStore</h1>
+            <p>Login to access your account</p>
 
-            <input type="password" id="password"
-                   placeholder="Enter Password" required>
+            <form id="login-form">
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    autocomplete="username"
+                    required
+                >
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required
+                >
 
-            <button type="submit">Log out</button>
-        </form>
+                <button type="submit">Login</button>
 
-        <p id="message"></p>
-    </div>
+                <p id="error-message"></p>
+            </form>
 
-    <!-- HOMEPAGE -->
-    <div id="homePage">
+        </div>
+    </section>
 
-        <h1>Welcome to TechZone</h1>
-        <p>Your Online Tech Products Store</p>
+    
+    <div id="home-page">
 
-        <hr>
+        <nav
+            <div class="logo">TechStore</div>
 
-        <h2>Navigation</h2>
-
-        <nav>
-            <a href="#homePage">Home</a> |
-            <a href="#about">About</a> |
-            <a href="#products">Products</a> |
-            <a href="#contact">Contact</a>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" id="logout-link">Log out</a></li>
+            </ul>
         </nav>
 
-        <hr>
+        <section class="home">
+            <div class="home-content">
 
-        <section id="about">
-            <h2>About Our Store</h2>
-            <p>
-                TechZone offers different technology products
-                for students, workers, and technology lovers.
-            </p>
+                <h1>Welcome to <span>TechStore</span></h1>
+
+                <p>
+                    Your online store for modern and reliable
+                    technology products.
+                </p>
+
+                <a href="product.html" class="btn">
+                    View Products
+                </a>
+
+            </div>
         </section>
-
-        <section id="products">
-            <h2>Our Products</h2>
-
-            <h3>Laptop</h3>
-            <p>Useful for studying, coding, and working.</p>
-
-            <h3>Smartphone</h3>
-            <p>Useful for communication and entertainment.</p>
-
-            <h3>Headphones</h3>
-            <p>Useful for listening to music and online classes.</p>
-        </section>
-
-        <hr>
-
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Email: John@gmail.com</p>
-        </section>
-
-        <button onclick="logout()">Logout</button>
 
         <footer>
-            <p>JOHN REEEVE CALMORIN</p>
+            <p>johnreevecalmorin@gmail.com</p>
         </footer>
 
     </div>
 
     <script>
-        function login(event) {
+        const loginForm = document.getElementById("login-form");
+        const loginPage = document.getElementById("login-page");
+        const homePage = document.getElementById("home-page");
+        const errorMessage = document.getElementById("error-message");
+
+        // Demo login credentials
+        const correctUsername = "admin";
+        const correctPassword = "12345";
+
+        loginForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            let user = document.getElementById("username").value;
-            let pass = document.getElementById("password").value;
+            const username =
+                document.getElementById("username").value.trim();
 
-            if (user === "admin" && pass === "1234") {
-                document.getElementById("loginPage").style.display = "none";
-                document.getElementById("homePage").style.display = "block";
+            const password =
+                document.getElementById("password").value;
+
+            if (
+                username === correctUsername &&
+                password === correctPassword
+            ) {
+                loginPage.style.display = "none";
+                homePage.style.display = "block";
+                errorMessage.textContent = "";
+                document.title = "TechStore - Home";
             } else {
-                document.getElementById("message").innerText =
-                    "Incorrect username or password!";
+                errorMessage.textContent =
+                    "Incorrect username or password.";
             }
-        }
+        });
 
-        function logout() {
-            document.getElementById("homePage").style.display = "none";
-            document.getElementById("loginPage").style.display = "block";
+        // Log out returns to the login form
+        document.getElementById("logout-link")
+            .addEventListener("click", function(event) {
+                event.preventDefault();
 
-            document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
-            document.getElementById("message").innerText = "";
-        }
+                homePage.style.display = "none";
+                loginPage.style.display = "flex";
+
+                loginForm.reset();
+                errorMessage.textContent = "";
+                document.title = "TechStore - Login";
+            });
     </script>
 
 </body>
 </html>
-
