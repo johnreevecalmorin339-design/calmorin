@@ -261,52 +261,6 @@
 
     </div>
 
-    <script>
-        const loginForm = document.getElementById("login-form");
-        const loginPage = document.getElementById("login-page");
-        const homePage = document.getElementById("home-page");
-        const errorMessage = document.getElementById("error-message");
-
-        // Demo login credentials
-        const correctUsername = "admin";
-        const correctPassword = "12345";
-
-        loginForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const username =
-                document.getElementById("username").value.trim();
-
-            const password =
-                document.getElementById("password").value;
-
-            if (
-                username === correctUsername &&
-                password === correctPassword
-            ) {
-                loginPage.style.display = "none";
-                homePage.style.display = "block";
-                errorMessage.textContent = "";
-                document.title = "TechStore - Home";
-            } else {
-                errorMessage.textContent =
-                    "Incorrect username or password.";
-            }
-        });
-
-        // Log out returns to the login form
-        document.getElementById("logout-link")
-            .addEventListener("click", function(event) {
-                event.preventDefault();
-
-                homePage.style.display = "none";
-                loginPage.style.display = "flex";
-
-                loginForm.reset();
-                errorMessage.textContent = "";
-                document.title = "TechStore - Login";
-            });
-    </script>
-
+   
 </body>
 </html>
