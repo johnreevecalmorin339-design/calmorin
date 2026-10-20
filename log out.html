@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechZone | Log out</title>
+    <title>TechStore - Login</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #0b1120;
+            background: #0f172a;
             color: white;
+            min-height: 100vh;
+        }
+
+        /* Login Page */
+        #login-page {
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,55 +28,46 @@
             padding: 20px;
         }
 
-        .login-container {
+        .login-box {
+            background: #111827;
+            padding: 40px;
             width: 100%;
             max-width: 400px;
-            padding: 35px;
-            background: #111a2e;
-            border: 1px solid #24344f;
             border-radius: 12px;
-            box-shadow: 0 0 20px #00c8ff22;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+            text-align: center;
         }
 
-        h1 {
-            text-align: center;
-            color: #00c8ff;
+        .login-box h1 {
+            color: #38bdf8;
             margin-bottom: 10px;
         }
 
-        .subtitle {
-            text-align: center;
-            color: #b8c4d9;
-            margin-bottom: 30px;
+        .login-box p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
         }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            background: #0b1120;
-            border: 1px solid #34445f;
-            border-radius: 6px;
-            color: white;
-            font-size: 15px;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #00c8ff;
-        }
-
-        button {
+        .login-box input {
             width: 100%;
             padding: 13px;
-            background: #00c8ff;
-            color: #0b1120;
+            margin-bottom: 18px;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            background: #1e293b;
+            color: white;
+            font-size: 16px;
+        }
+
+        .login-box input:focus {
+            outline: 2px solid #38bdf8;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 13px;
+            background: #38bdf8;
+            color: #0f172a;
             border: none;
             border-radius: 6px;
             font-size: 16px;
@@ -79,77 +75,237 @@
             cursor: pointer;
         }
 
-        button:hover {
-            background: white;
+        .login-box button:hover {
+            background: #0ea5e9;
         }
 
-        #error {
-            color: #ff7070;
-            text-align: center;
+        #error-message {
+            color: #f87171;
             margin-top: 15px;
+            font-size: 14px;
         }
 
-        .back-home {
-            display: block;
-            text-align: center;
-            color: #00c8ff;
+        /* Homepage */
+        #home-page {
+            display: none;
+        }
+
+        nav {
+            background: #111827;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: white;
             text-decoration: none;
-            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .home {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .home-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .home-content h1 span {
+            color: #38bdf8;
+        }
+
+        .home-content p {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111827;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .home-content h1 {
+                font-size: 35px;
+            }
+
+            .login-box {
+                padding: 28px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="login-container">
-        <h1>TECHZONE</h1>
-        <p class="subtitle">Login to Your Account</p>
+    <!-- FIRST PAGE: LOGIN FORM -->
+    <section id="login-page">
+        <div class="login-box">
 
-        <form id="loginForm">
-            <label for="username">Username</label>
-            <input
-                type="text"
-                id="username"
-                placeholder="Enter your username"
-                required
-            >
+            <h1>TechStore</h1>
+            <p>Login to access your account</p>
 
-            <label for="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                required
-            >
+            <form id="login-form">
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    autocomplete="username"
+                    required
+                >
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required
+                >
 
-            <button type="submit">Log In</button>
+                <button type="submit">Login</button>
 
-            <p id="error"></p>
-        </form>
+                <p id="error-message"></p>
+            </form>
 
-        <a href="homepage.html" class="back-home">
-            Back to Home
-        </a>
+        </div>
+    </section>
+
+    <!-- SECOND PAGE: HOMEPAGE -->
+    <div id="home-page">
+
+        <nav
+            <div class="logo">TechStore</div>
+
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#" id="logout-link">Log out</a></li>
+            </ul>
+        </nav>
+
+        <section class="home">
+            <div class="home-content">
+
+                <h1>Welcome to <span>TechStore</span></h1>
+
+                <p>
+                    Your online store for modern and reliable
+                    technology products.
+                </p>
+
+                <a href="product.html" class="btn">
+                    View Products
+                </a>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>johnreevecalmorin@gmail.com</p>
+        </footer>
+
     </div>
 
     <script>
-        document.getElementById("loginForm")
-        .addEventListener("submit", function(event) {
+        const loginForm = document.getElementById("login-form");
+        const loginPage = document.getElementById("login-page");
+        const homePage = document.getElementById("home-page");
+        const errorMessage = document.getElementById("error-message");
+
+        // Demo login credentials
+        const correctUsername = "admin";
+        const correctPassword = "12345";
+
+        loginForm.addEventListener("submit", function(event) {
             event.preventDefault();
 
             const username =
-                document.getElementById("username").value;
+                document.getElementById("username").value.trim();
 
             const password =
                 document.getElementById("password").value;
 
-            if (username === "John" && password === "12345") {
-                window.location.href = "index.html";
+            if (
+                username === correctUsername &&
+                password === correctPassword
+            ) {
+                loginPage.style.display = "none";
+                homePage.style.display = "block";
+                errorMessage.textContent = "";
+                document.title = "TechStore - Home";
             } else {
-                document.getElementById("error").textContent =
+                errorMessage.textContent =
                     "Incorrect username or password.";
             }
         });
+
+        // Log out returns to the login form
+        document.getElementById("logout-link")
+            .addEventListener("click", function(event) {
+                event.preventDefault();
+
+                homePage.style.display = "none";
+                loginPage.style.display = "flex";
+
+                loginForm.reset();
+                errorMessage.textContent = "";
+                document.title = "TechStore - Login";
+            });
     </script>
 
 </body>
