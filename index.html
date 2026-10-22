@@ -1,11 +1,14 @@
+ 
+John Reeve Calmorin <johnreevecalmorin339@gmail.com>
+11:18 AM (2 hours ago)
+to me
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TechStore - Home</title>
-
+    <title>TechStore Login</title>
     <style>
         * {
             margin: 0;
@@ -15,135 +18,122 @@
         }
 
         body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
             background: #0f172a;
             color: white;
         }
 
-        /* Navigation Bar */
-        nav {
+        .login-box {
+            width: 100%;
+            max-width: 380px;
+            padding: 35px;
             background: #111827;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
         }
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        nav ul li a:hover {
-            color: #38bdf8;
-        }
-
-        /* Homepage */
-        .home {
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        h1 {
             text-align: center;
-            padding: 20px;
-        }
-
-        .home-content h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
-        }
-
-        .home-content h1 span {
             color: #38bdf8;
+            margin-bottom: 8px;
         }
 
-        .home-content p {
-            font-size: 18px;
+        .subtitle {
+            text-align: center;
             color: #cbd5e1;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            background: #0f172a;
+            color: white;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
             background: #38bdf8;
             color: #0f172a;
-            text-decoration: none;
-            border-radius: 5px;
+            font-size: 16px;
             font-weight: bold;
+            cursor: pointer;
         }
 
-        .btn:hover {
+        button:hover {
             background: #0ea5e9;
         }
 
-        /* Footer */
-        footer {
+        #message {
+            margin-top: 15px;
             text-align: center;
-            padding: 20px;
-            background: #111827;
-            color: #94a3b8;
+            color: #f87171;
+            font-size: 14px;
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Navigation -->
-    <nav>
+    <div class="login-box">
+        <h1>TechStore</h1>
+        <p class="subtitle">Login to your account</p>
 
-        <div class="logo">
-            TechStore
-        </div>
+        <form id="loginForm">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                autocomplete="username"
+                required
+            >
 
-        <ul>
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="product.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        
-        </ul>
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                required
+            >
 
-    </nav>
+            <button type="submit">Log In</button>
+            <div id="message" role="alert"></div>
+        </form>
+    </div>
 
-  
-    <section class="home">
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
 
-        <div class="home-content">
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
 
-            <h1>
-                Welcome to <span>TechStore</span>
-            </h1>
-
-            <p>
-                Your online store for modern and reliable
-                technology products.
-            </p>
-
-            <a href="products.html" class="btn">
-                View Products
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>johnreevecalmorin@gmail.com</p>
-    </footer>
+            if (username === "admin" && password === "12345") {
+                window.location.href = "techstore_homepage.html";
+            } else {
+                message.textContent = "Incorrect username or password!";
+            }
+        });
+    </script>
 
 </body>
 </html>
+   
